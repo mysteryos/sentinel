@@ -11,10 +11,10 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Sentinel
- * @version    2.0.12
+ * @version    2.0.13
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011-2015, Cartalyst LLC
+ * @copyright  (c) 2011-2016, Cartalyst LLC
  * @link       http://cartalyst.com
  */
 
@@ -356,6 +356,7 @@ class IlluminateThrottleRepositoryTest extends PHPUnit_Framework_TestCase
 
         $model->getConnection()->getPostProcessor()->shouldReceive('processInsertGetId')->once();
         $model->getConnection()->getQueryGrammar()->shouldReceive('compileUpdate')->once();
+        $model->getConnection()->getQueryGrammar()->shouldReceive('prepareBindingsForUpdate')->once()->andReturn([]);
         $model->getConnection()->shouldReceive('update')->once();
 
         $user = m::mock('Cartalyst\Sentinel\Users\EloquentUser');

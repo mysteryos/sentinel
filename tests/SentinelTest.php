@@ -11,10 +11,10 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Sentinel
- * @version    2.0.12
+ * @version    2.0.13
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011-2015, Cartalyst LLC
+ * @copyright  (c) 2011-2016, Cartalyst LLC
  * @link       http://cartalyst.com
  */
 
@@ -342,12 +342,14 @@ class SentinelTest extends PHPUnit_Framework_TestCase
         $sentinel->setRoleRepository(m::mock('Cartalyst\Sentinel\Roles\IlluminateRoleRepository'));
         $sentinel->setActivationRepository(m::mock('Cartalyst\Sentinel\Activations\IlluminateActivationRepository'));
         $sentinel->setReminderRepository(m::mock('Cartalyst\Sentinel\Reminders\IlluminateReminderRepository'));
+        $sentinel->setThrottleRepository(m::mock('Cartalyst\Sentinel\Throttling\IlluminateThrottleRepository'));
 
         $this->assertInstanceOf('Cartalyst\Sentinel\Persistences\PersistenceRepositoryInterface', $sentinel->getPersistenceRepository());
         $this->assertInstanceOf('Cartalyst\Sentinel\Users\UserRepositoryInterface', $sentinel->getUserRepository());
         $this->assertInstanceOf('Cartalyst\Sentinel\Roles\RoleRepositoryInterface', $sentinel->getRoleRepository());
         $this->assertInstanceOf('Cartalyst\Sentinel\Activations\ActivationRepositoryInterface', $sentinel->getActivationRepository());
         $this->assertInstanceOf('Cartalyst\Sentinel\Reminders\ReminderRepositoryInterface', $sentinel->getReminderRepository());
+        $this->assertInstanceOf('Cartalyst\Sentinel\Throttling\ThrottleRepositoryInterface', $sentinel->getThrottleRepository());
     }
 
     public function testLogin()
